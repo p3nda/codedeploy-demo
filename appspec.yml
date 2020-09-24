@@ -3,12 +3,18 @@ os: linux
 files:
   - source: /index.html
     destination: /var/www/html/
+  - source: /setup.py
+  - source: /foo.py
 hooks:
   BeforeInstall:
     - location: scripts/install_dependencies
       timeout: 300
       runas: root
     - location: scripts/start_server
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: scripts/create_egg
       timeout: 300
       runas: root
   ApplicationStop:
