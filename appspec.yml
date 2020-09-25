@@ -3,9 +3,9 @@ os: linux
 files:
   - source: /index.html
     destination: /var/www/html/
-  - source: /setup.py
+  - source: setup.py
     destination: /var/www/html/
-  - source: /foo.py
+  - source: foo.py
     destination: /var/www/html/
 hooks:
   BeforeInstall:
