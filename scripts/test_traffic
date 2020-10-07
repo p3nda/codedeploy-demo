@@ -1,0 +1,11 @@
+#!/bin/bash
+status=`curl -I http://localhost/index.nginx-debian.html | grep 200`
+if [ ! -z "$status" ]
+then
+echo "0" && exit 0;
+else  
+## stop the deployment 
+deploymentid=`tail -n 1 /opt/codedeploy-agent/deployment-root/deployment-logs/codedeploy-agent-deployments.log | awk '{ print $3 }' | cut -d "]" -f 1 | cut -d "[" -f 2`
+aws deploy stop-deployment --deployment-id $deploymentid --region eu-west-1
+exit 1
+fi
