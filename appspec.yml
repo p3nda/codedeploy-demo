@@ -15,4 +15,9 @@ hooks:
     - location: scripts/stop_server
       timeout: 300
       runas: root
+  ValidateService:
+    - location: scripts/test_traffic
+      timeout: 300
+      runas: root 
+
 
